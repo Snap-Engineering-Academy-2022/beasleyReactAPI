@@ -11,6 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import './App.css';
+import CharacterCard from './CharacterCard';
 // import characters from './protagonists.json'
 
 function App() {
@@ -67,45 +68,42 @@ function App() {
             xs={12}
             md={4}
           >
-            <Card>
-              <CardMedia
-                component="img"
-                height="350px"
-                image={"https://i.imgur.com/56chgMj.png"}
-              />
-              <CardHeader
-                title={"Miles Morales"}
-                titleTypographyProps={{ align: 'center' }}
-                sx={{ mt: 1 }}
-              />
-              <CardContent sx={{ pt: 0 }}>
-                <ul>
-                    <Typography component="li">
-                      Definitely Not Spiderman
-                    </Typography>
-                    <Typography component="li">
-                      "Lanky Puberty Boy" vibes
-                    </Typography>
-                    <Typography component="li">
-                      Can't do it on demand
-                    </Typography>
-                    <Typography component="li">
-                      Elite music taste
-                    </Typography>
-                </ul>
-              </CardContent>
-              <CardActions>
-                <Button 
-                  variant="contained"
-                  sx={{ px: 6, mx: 'auto' }}
-                  // I'm trying to use custom CSS defined in the file App.css,
-                  // but it isn't working. Why, and how can I fix it?
-                  className="characterButton"
-                >
-                  Vote
-                </Button>
-              </CardActions>
-            </Card>
+            <CharacterCard
+            heroImage = "https://i.imgur.com/56chgMj.png"
+            name= "Miles Morales"
+            fact1 = "Definitly Not Spiderman"
+            fact2 = '"Lanky Puberty Boy" vibe'
+            fact3 = "Can't do it on demand"
+            fact4 = "Elite music taste"
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+          >
+            <CharacterCard
+            heroImage = "https://i.imgur.com/zuscNPl.png"
+            name= "Moana Waialiki"
+            fact1 = "Glass half full kinda gal"
+            fact2 = "Lackluster chicken mom"
+            fact3 = "Spaces out looking at water"
+            fact4 = "Never really knows why"
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={4}
+          >
+            <CharacterCard
+            heroImage = "https://i.imgur.com/SaYqUTP.png"
+            name= "Hero Hamada"
+            fact1 = "Saved by a flying pillow. Again."
+            fact2 = "Has epic bedhead"
+            fact3 = "Hiro = Hiccup, Baymax = Toothless"
+            fact4 = "Neeeeeeeeeeeeeeeerd"
+            />
           </Grid>
         </Grid>
       </Container>
