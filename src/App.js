@@ -12,7 +12,23 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import './App.css';
 import CharacterCard from './CharacterCard';
-// import characters from './protagonists.json'
+import characters from './protagonists.json'
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+var animalData = "";
+fetch("https://zoo-animal-api.herokuapp.com/animals/rand/3", requestOptions)
+  .then(response => response.text())
+  .then(result => {console.log("animals JSON data", result)
+    animalData = result;})
+  .catch(error => console.log('error', error));
+
+
+    console.log(animalData, "--->")
+  
 
 function App() {
   return (
@@ -63,49 +79,27 @@ function App() {
           justifyContent="center"
           alignItems="flex-start"
         >
-          <Grid
+          {
+            characters.map((character, index) =>
+            <Grid
             item
             xs={12}
             md={4}
+            key = {index}
           >
             <CharacterCard
-            heroImage = "https://i.imgur.com/56chgMj.png"
-            name= "Miles Morales"
-            fact1 = "Definitly Not Spiderman"
-            fact2 = '"Lanky Puberty Boy" vibe'
-            fact3 = "Can't do it on demand"
-            fact4 = "Elite music taste"
-            />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={4}
-          >
-            <CharacterCard
-            heroImage = "https://i.imgur.com/zuscNPl.png"
-            name= "Moana Waialiki"
-            fact1 = "Glass half full kinda gal"
-            fact2 = "Lackluster chicken mom"
-            fact3 = "Spaces out looking at water"
-            fact4 = "Never really knows why"
-            />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={4}
-          >
-            <CharacterCard
-            heroImage = "https://i.imgur.com/SaYqUTP.png"
-            name= "Hero Hamada"
-            fact1 = "Saved by a flying pillow. Again."
-            fact2 = "Has epic bedhead"
-            fact3 = "Hiro = Hiccup, Baymax = Toothless"
-            fact4 = "Neeeeeeeeeeeeeeeerd"
-            />
-          </Grid>
+            name = {character.title}
+            heroImage = {character.pic}
+            descriptionArray = {character.description}
+            >
+              
+            </CharacterCard>
+            </Grid>)
+          }
+
+          
         </Grid>
+          
       </Container>
     </div>
   );
